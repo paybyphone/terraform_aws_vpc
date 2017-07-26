@@ -35,6 +35,7 @@ resource "aws_vpc" "vpc" {
   enable_dns_hostnames = true
 
   tags {
+    created_by   = "terraform"
     project_path = "${var.project_path}"
   }
 }
@@ -49,6 +50,7 @@ resource "aws_subnet" "public_subnets" {
   availability_zone       = "${element(data.aws_availability_zones.azs.names, count.index)}"
 
   tags {
+    created_by   = "terraform"
     project_path = "${var.project_path}"
   }
 
@@ -64,6 +66,7 @@ resource "aws_internet_gateway" "public_gateway" {
   vpc_id = "${aws_vpc.vpc.id}"
 
   tags {
+    created_by   = "terraform"
     project_path = "${var.project_path}"
   }
 }
@@ -73,6 +76,7 @@ resource "aws_route_table" "public_route_table" {
   vpc_id = "${aws_vpc.vpc.id}"
 
   tags {
+    created_by   = "terraform"
     project_path = "${var.project_path}"
   }
 }
