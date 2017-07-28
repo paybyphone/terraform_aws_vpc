@@ -1,3 +1,7 @@
+## v0.1.3
+
+Added `Name` tags to taggable resources.
+
 ## v0.1.2
 
 Added `created_by: terraform` tag to taggable resources.
