@@ -6,6 +6,11 @@ variable "project_path" {
   default = ""
 }
 
+variable "public_subnet_name_prefix" {
+  type    = "string"
+  default = "Public"
+}
+
 // The network address for the VPC.
 variable "vpc_network_address" {
   type = "string"
@@ -24,4 +29,10 @@ variable "public_subnet_addresses" {
 variable "map_public_addresses" {
   type    = "string"
   default = "true"
+}
+
+variable "vpc_name" {
+  description = "Name to assign to the VPC"
+  type        = "string"
+  default     = ""
 }

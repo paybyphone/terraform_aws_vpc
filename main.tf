@@ -37,6 +37,7 @@ resource "aws_vpc" "vpc" {
   tags {
     created_by   = "terraform"
     project_path = "${var.project_path}"
+    Name         = "${var.vpc_name}"
   }
 }
 
@@ -50,6 +51,7 @@ resource "aws_subnet" "public_subnets" {
   availability_zone       = "${element(data.aws_availability_zones.azs.names, count.index)}"
 
   tags {
+    Name         = "${var.public_subnet_name_prefix != "" ? "${var.public_subnet_name_prefix} - ${upper(substr(element(data.aws_availability_zones.azs.names, count.index), -1, -1))}" : ""}"
     created_by   = "terraform"
     project_path = "${var.project_path}"
   }
@@ -76,6 +78,7 @@ resource "aws_route_table" "public_route_table" {
   vpc_id = "${aws_vpc.vpc.id}"
 
   tags {
+    Name         = "Public"
     created_by   = "terraform"
     project_path = "${var.project_path}"
   }

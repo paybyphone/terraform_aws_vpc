@@ -28,18 +28,20 @@ availability zones available to you.
 
 | Name | Description | Default | Required |
 |------|-------------|:-----:|:-----:|
-| project_path | The path to the project in VCS. | `` | no |
-| vpc_network_address | The network address for the VPC. | - | yes |
-| public_subnet_addresses | Network addresses for subnets to create this VPC.<br><br>If more than one address is specified, the subnets are created across all available availability zones sequentially, wrapping around when the last availability zone for the region is reached. | - | yes |
 | map_public_addresses | Default new instances to have public IP addresses. | `true` | no |
+| project_path | The path to the project in VCS. | `` | no |
+| public_subnet_addresses | Network addresses for subnets to create this VPC.<br><br>If more than one address is specified, the subnets are created across all available availability zones sequentially, wrapping around when the last availability zone for the region is reached. | - | yes |
+| public_subnet_name_prefix |  | `Public` | no |
+| vpc_name | Name to assign to the VPC | `` | no |
+| vpc_network_address | The network address for the VPC. | - | yes |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| vpc_id | The ID of the created VPC. |
 | default_network_acl_id | The default network ACL ID for the VPC. |
-| public_subnet_ids | The IDs of the created public subnets. |
-| public_subnet_availability_zones | The availability zones for the the created public subnets, as a subnet ID -> zone map. |
 | public_route_table_id | The public route table ID for the created VPC. |
+| public_subnet_availability_zones | The availability zones for the the created public subnets, as a subnet ID -> zone map. |
+| public_subnet_ids | The IDs of the created public subnets. |
+| vpc_id | The ID of the created VPC. |
 
